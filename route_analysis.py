@@ -20,11 +20,11 @@ routes = []
 airports = {}
 
 for flight in flightdata:
-    if '{}/{}'.format(flight['from'], flight['to']) not in routes:
-        routes.append('{}/{}'.format(flight['from'], flight['to']))
+    if f"{flight['from']}/{flight['to']}" not in routes:
+        routes.append(f"{flight['from']}/{flight['to']}")
     if not directional:
-        if '{}/{}'.format(flight['to'], flight['from']) not in routes:
-            routes.append('{}/{}'.format(flight['to'], flight['from']))
+        if f"{flight['to']}/{flight['from']}" not in routes:
+            routes.append(f"{flight['to']}/{flight['from']}")
     
     if flight['from'] not in airports:
         airports[flight['from']] = []
@@ -48,12 +48,12 @@ while True:
     
     if '/' in uinput:
         if uinput in routes:
-            print('Found {} in list of routes'.format(uinput))
+            print(f"Found {uinput} in list of routes")
         else:
-            print('Did not find {} in list of routes'.format(uinput))
+            print(f"Did not find {uinput} in list of routes")
     else:
         if uinput in airports:
-            print('Found {} in list of airports'.format(uinput))
-            print('Found routes from {} to {}'.format(uinput, ', '.join(airports[uinput])))
+            print(f"Found {uinput} in list of airports")
+            print(f"Found routes from {uinput} to {', '.join(airports[uinput])}")
         else:
-            print('Did not find {} in list of airports'.format(uinput))
+            print(f"Did not find {uinput} in list of airports")
